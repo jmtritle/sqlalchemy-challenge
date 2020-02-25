@@ -65,15 +65,17 @@ def tobs():
 # When given the start and the end date, calculate the `TMIN`, `TAVG`, and `TMAX` for dates between the start and end date inclusive.'''
 
 
-#@app.route('/api/v1.0/2017-06-01')
-#def start():
-#  start_temp = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).filter(Measurement.date >= '2017-06-01').group_by(Measurement.date).all()
-#  start_temp_list = list(start_temp)
-#  return jsonify(start_temp_list)
+@app.route('/api/v1.0/2017-06-01')
+def start():
+  start_temp = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).filter(Measurement.date >= '2017-06-01').group_by(Measurement.date).all()
+  start_temp_list = list(start_temp)
+  return jsonify(start_temp_list)
 
-#@app.route('/api/v1.0/2017-06-01/2017-06-10')
-#def end():
+@app.route('/api/v1.0/2017-06-01/2017-06-10')
+def end():
+  start_end_temp = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).filter(Measurement.date >= '2017-06-01').filter(Measurement.date <='2017-06-10').group_by(Measurement.date).all()
+  start_end_temp_list = list(start_end_temp)
+  return jsonify(start_end_temp_list)
     
-
-# if __name__ == "__main__":
-#  app.run(debug=True)
+if __name__ == "__main__":
+  app.run(debug=True)
