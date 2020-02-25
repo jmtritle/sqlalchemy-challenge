@@ -21,7 +21,7 @@ app = Flask(__name__)
 # List all routes that are available.
 
 @app.route('/')
-def home():
+def main():
   return """<h2>List of all routes that are available:</h2>
   <p>
   <ul>
